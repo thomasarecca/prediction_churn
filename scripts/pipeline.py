@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 
 def load_data():
@@ -5,6 +6,9 @@ def load_data():
     return df
 
 def preprocess_data(df):
+    # Ensure the 'processed' directory exists
+    os.makedirs("data/processed", exist_ok=True)
+
     df = df.dropna()
     df.to_csv("data/processed/cleaned_data.csv", index=False)
 
